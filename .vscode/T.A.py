@@ -1,3 +1,5 @@
+#PROYECTO DE FIN DE CILO 1 - CARLOS SEBASTIAN CALDERON VEGA
+#02/07/23
 import tkinter as tk
 import matplotlib
 import matplotlib.pyplot as plt
