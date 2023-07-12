@@ -1,13 +1,10 @@
-#PROYECTO DE FIN DE CILO 1 - CARLOS SEBASTIAN CALDERON VEGA
-#02/07/23
 import tkinter as tk
-import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-import numpy as np
 from PIL import Image, ImageTk
+from vpython import *
 global fondo1
 ventana_01=tk.Tk()
 ventana_01.title("MOVIMIENTO RECTILINEO UNIFORME VARIADO (M.R.U.)")
@@ -18,7 +15,8 @@ ventana_01.geometry("900x500")
 fondo1 = ImageTk.PhotoImage(file="imagenes/fondo01.png")
 label_fondo = tk.Label( ventana_01, image=fondo1).place(x=0,y=0,relwidth=1,relheight=1)
 #funcion para la velocidad inicial 
-def V_v_inicial():
+def V_v_inicial(): 
+    
     global fondo_vi
     ventana_vi=tk.Toplevel()
     ventana_vi.resizable(0,0)
@@ -61,7 +59,7 @@ def V_calcular_vi(V_final,tiempo,aceleracion):
     print (resultado)
  
     V_calcular_vi= tk.Toplevel()
-    V_calcular_vi.title("CALCULAR ACELERACION")
+    V_calcular_vi.title("CALCULAR VELOCIDAD INICIAL")
     V_calcular_vi.geometry("900x500")
     V_calcular_vi.protocol("WM_DELETE_WINDOW", V_calcular_vi.destroy)
     V_calcular_vi.resizable(0,0)
@@ -122,7 +120,7 @@ def V_calcular_vf(V_inicial,tiempo,distancia):
 
  
     v_calcular_vf= tk.Toplevel()
-    v_calcular_vf.title("CALCULAR ACELERACION")
+    v_calcular_vf.title("CALCULAR VELOCIDAD FINAL")
     v_calcular_vf.geometry("900x500")
     v_calcular_vf.protocol("WM_DELETE_WINDOW", v_calcular_vf.destroy)
     v_calcular_vf.resizable(0,0)
@@ -146,7 +144,7 @@ def V_a():
     ventana_a.resizable(0,0)
     ventana_a.iconbitmap("imagenes/carrito.ico")
     ventana_a.geometry("900x500")
-    ventana_a.title("VELOCIDAD INICIAL")
+    ventana_a.title("VELOCIDAD ACELERACIÓN")
     imagen_a=Image.open("imagenes/fondo_a.png")
     fondo_a=ImageTk.PhotoImage(imagen_a)
     label_fondo_a=tk.Label(ventana_a, image=fondo_a)
@@ -183,7 +181,7 @@ def V_calcular_a(V_inicial,tiempo,distancia):
     print (resultado)
  
     V_calcular_a= tk.Toplevel()
-    V_calcular_a.title("CALCULAR ACELERACION")
+    V_calcular_a.title("CALCULAR ACELERACIÓN")
     V_calcular_a.geometry("900x500")
     V_calcular_a.protocol("WM_DELETE_WINDOW", V_calcular_a.destroy)
     V_calcular_a.resizable(0,0)
@@ -207,7 +205,7 @@ def V_d():
     ventana_d.resizable(0,0)
     ventana_d.iconbitmap("imagenes/carrito.ico")
     ventana_d.geometry("900x500")
-    ventana_d.title("VELOCIDAD INICIAL")
+    ventana_d.title("VELOCIDAD DISTANCIA")
     imagen_d=Image.open("imagenes/fondo_d.png")
     fondo_d=ImageTk.PhotoImage(imagen_d)
     label_fondo_d=tk.Label(ventana_d, image=fondo_d)
@@ -245,7 +243,7 @@ def V_calcular_d(V_inicial,aceleracion,tiempo):
     print (resultado)
  
     V_calcular_d= tk.Toplevel()
-    V_calcular_d.title("CALCULAR ACELERACION")
+    V_calcular_d.title("CALCULAR DISTANCIA")
     V_calcular_d.geometry("900x500")
     V_calcular_d.protocol("WM_DELETE_WINDOW", V_calcular_d.destroy)
     V_calcular_d.resizable(0,0)
@@ -269,7 +267,7 @@ def V_t():
     ventana_t.resizable(0,0)
     ventana_t.iconbitmap("imagenes/carrito.ico")
     ventana_t.geometry("900x500")
-    ventana_t.title("VELOCIDAD INICIAL")
+    ventana_t.title("VELOCIDAD TIEMPO")
     imagen_d=Image.open("imagenes/fondo_t.png")
     fondo_d=ImageTk.PhotoImage(imagen_d)
     label_fondo_d=tk.Label(ventana_t, image=fondo_d)
@@ -307,7 +305,7 @@ def V_calcular_t(V_inicial,v_final,distancia):
     print (resultado)
  
     V_calcular_d= tk.Toplevel()
-    V_calcular_d.title("CALCULAR ACELERACION")
+    V_calcular_d.title("CALCULAR TIEMPO")
     V_calcular_d.geometry("900x500")
     V_calcular_d.protocol("WM_DELETE_WINDOW", V_calcular_d.destroy)
     V_calcular_d.resizable(0,0)
@@ -369,8 +367,7 @@ def graficaVelocidadVsTiempo(vo,t,a):
     print(" Y: el Rango")
     print(y)
     #Generamos una grafica lineal para una recta en X
-    #ax=plt.subplot();
-    plt.plot(x, y, label='linear', color="blue")
+    plt.plot(x, y, label='lineal', color="blue")
    # Mostrar solo 10 valores en el eje X y 10 valores en el eje Y
     x_ticks = np.linspace(min(x), max(x), 10)
     y_ticks = np.linspace(min(y), max(y), 10)
@@ -401,7 +398,7 @@ def V_gdt():
     ventana_d.resizable(0,0)
     ventana_d.iconbitmap("imagenes/carrito.ico")
     ventana_d.geometry("900x500")
-    ventana_d.title("GRAFICA: VELOCIDAD INICIAL vs. TIEMPO")
+    ventana_d.title("GRAFICA: DISTANCIA vs. TIEMPO")
     imagen_d=Image.open("imagenes/fondo_gdt.png")
     fondo_d=ImageTk.PhotoImage(imagen_d)
     label_fondo_d=tk.Label(ventana_d, image=fondo_d)
@@ -440,7 +437,7 @@ def graficaDistanciaVsTiempo(vo,t,a):
     print(" Y: el Rango")
     print(y)
     #Generamos una grafica cuadratica para una recta en X
-    plt.plot(x, y, label='Cudratica', color="green")
+    plt.plot(x, y, label='Cuadratica', color="green")
    # Mostrar solo 10 valores en el eje X y 10 valores en el eje Y
     x_ticks = np.linspace(min(x), max(x), 10)
     y_ticks = np.linspace(min(y), max(y), 10)
@@ -449,7 +446,7 @@ def graficaDistanciaVsTiempo(vo,t,a):
     plt.fill_between(x,y,color='green',alpha=0.3)
     plt.xlabel('Tiempo')
     plt.ylabel('Distancia')
-    plt.title("GRÁFICA VELOCIDAD vs TIEMPO")
+    plt.title("GRÁFICA DISTANCIA vs TIEMPO")
     plt.legend()
     plt.savefig('grafica_V_vs_T.png')
     plt.show()
@@ -464,36 +461,111 @@ def V_graficar_dt(V_inicial,tiempo, aceleracion):
     a= float (aceleracion.get())
     graficaDistanciaVsTiempo(vi,t,a)
 
+def V_s():
+    global fondo_d
+    ventana_d=tk.Toplevel()
+    ventana_d.resizable(0,0)
+    ventana_d.iconbitmap("imagenes/carrito.ico")
+    ventana_d.geometry("900x500")
+    ventana_d.title("SIMULACIÓN")
+    imagen_d=Image.open("imagenes/fondo_s.png")
+    fondo_d=ImageTk.PhotoImage(imagen_d)
+    label_fondo_d=tk.Label(ventana_d, image=fondo_d)
+    label_fondo_d.pack()
+
+    aceleracion= tk.StringVar()
+    aceleracion=tk.Entry(ventana_d, textvar=aceleracion, width=10,relief="flat", bg="#38b6ff")
+    aceleracion.place(x=290,y=295)    
+    aceleracion.config(font=("Arial", 14))
+    
+    tiempo= tk.StringVar()
+    tiempo=tk.Entry(ventana_d, textvariable=tiempo, width=10, relief="flat", bg="#38b6ff")
+    tiempo.place(x=290,y=368)    
+    tiempo.config(font=("Arial", 14))
+
+    b_calcular = ImageTk.PhotoImage(file="imagenes/icono_grafica.png")
+    boton_calcular = tk.Button(ventana_d,image=b_calcular,command=lambda:V_graficar_s(tiempo,aceleracion) , cursor="hand2", height=96, width=96)
+    boton_calcular.place(x=450,y=280)
+
+    ventana_d.mainloop()
+
+def simulate_mruv(time, acceleration):
+    # Crear una escena
+    scene = canvas(title='Simulación de MRUV', width=1500, height=600)
+
+    # Crear objetos de visualización
+    window = box(pos=vector(0, 0,0), size=vector(300, 5, 0.2), color=color.gray(2))
+    object = sphere(pos=vector(0, 0, 0), radius=0.8, color=color.red)
+
+    # Definir variables del movimiento
+    initial_position = object.pos.x  # Posición inicial del objeto
+    initial_velocity = 0  # Velocidad inicial del objeto
+
+    # Definir gráfico de posición vs. tiempo
+    graph_pos_vs_time = graph(title='Posición vs. Tiempo', xtitle='Tiempo (s)', ytitle='Posición (m)')
+    position_vs_time = gcurve(color=color.blue)
+
+    # Definir gráfico de velocidad vs. tiempo
+    graph_vel_vs_time = graph(title='Velocidad vs. Tiempo', xtitle='Tiempo (s)', ytitle='Velocidad (m/s)')
+    velocity_vs_time = gcurve(color=color.green)
+
+    # Definir variables de tiempo
+    t = 0  # Tiempo inicial
+    dt = 0.01  # Incremento de tiempo por cada iteración
+
+    # Bucle de simulación
+    while t <= time:
+        rate(100)  # Controla la velocidad de la animación
+
+        # Calcular la posición y la velocidad en función del tiempo y la aceleración
+        position = initial_position + initial_velocity * t + 0.5*acceleration*t*t
+        velocity = initial_velocity + acceleration * t
+
+        # Actualizar la posición del objeto en la simulación
+        object.pos.x = position
+
+        # Agregar puntos al gráfico de posición vs. tiempo
+        position_vs_time.plot(t, position)
+
+        # Agregar puntos al gráfico de velocidad vs. tiempo
+        velocity_vs_time.plot(t, velocity)
+
+        t += dt
+
+def V_graficar_s(tiempo, aceleracion):
+    t= float (tiempo.get())
+    a= float (aceleracion.get())
+    simulate_mruv(t,a)
 
 
 #botones 
 b_vi = ImageTk.PhotoImage(file="imagenes/boton_vi.gif")
-boton_vi=tk.Button(ventana_01, image=b_vi,command=V_v_inicial, height=70, width=200).place(x=400,y=20)
+boton_vi=tk.Button(ventana_01, image=b_vi,command=V_v_inicial, height=70, cursor="hand2", width=200).place(x=400,y=20)
 
 b_vf = ImageTk.PhotoImage(file="imagenes/boton_vf.gif")
-boton_vf=tk.Button(ventana_01, image=b_vf,command=V_v_final, height=70, width=200).place(x=400,y=110)
+boton_vf=tk.Button(ventana_01, image=b_vf,command=V_v_final, height=70, cursor="hand2", width=200).place(x=400,y=110)
 
 b_a = ImageTk.PhotoImage(file="imagenes/boton_a.gif")
-boton_a=tk.Button(ventana_01, image=b_a, height=70,command=V_a, width=200).place(x=400,y=200)
+boton_a=tk.Button(ventana_01, image=b_a, height=70,command=V_a, cursor="hand2", width=200).place(x=400,y=200)
 
 
 b_d = ImageTk.PhotoImage(file="imagenes/boton_d.gif")
-boton_d=tk.Button(ventana_01, image=b_d, height=70,command=V_d, width=200).place(x=400,y=290)
+boton_d=tk.Button(ventana_01, image=b_d, height=70,command=V_d, cursor="hand2", width=200).place(x=400,y=290)
 
 
 b_t = ImageTk.PhotoImage(file="imagenes/boton_t.gif")
-boton_t=tk.Button(ventana_01, image=b_t, height=70,command=V_t, width=200).place(x=400,y=380)
+boton_t=tk.Button(ventana_01, image=b_t, height=70,command=V_t, cursor="hand2", width=200).place(x=400,y=380)
 
 
 b_g_DxT = ImageTk.PhotoImage(file="imagenes/g_DxT.gif")
-boton_g_DxT=tk.Button(ventana_01, image=b_g_DxT, height=100 ,command=V_gdt, width=200).place(x=650,y=30)
+boton_g_DxT=tk.Button(ventana_01, image=b_g_DxT, height=100, cursor="hand2" ,command=V_gdt, width=200).place(x=650,y=30)
 
 
 b_g_VxT = ImageTk.PhotoImage(file="imagenes/g_VxT.gif")
 boton_g_VxT=tk.Button(ventana_01, image=b_g_VxT, height=100,command=V_gvt, width=200).place(x=650,y=180)
 
 b_s = ImageTk.PhotoImage(file="imagenes/SIMULACION.png")
-boton_s=tk.Button(ventana_01, image=b_s, height=100, width=200).place(x=650,y=330)
+boton_s=tk.Button(ventana_01, image=b_s, height=100, cursor="hand2",command=V_s, width=200).place(x=650,y=330)
 
 
 ventana_01.mainloop()
